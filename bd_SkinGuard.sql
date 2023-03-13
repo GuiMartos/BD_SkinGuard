@@ -12,6 +12,7 @@ create table dev(
  email varchar(50) not null,
  senha varchar(8) not null
 );
+ALTER TABLE "dev" ADD CONSTRAINT "fk_usuario" FOREIGN KEY ("id_usuario") REFERENCES "usuario" ("id_usuario");
 
 create table tom_pele(
 id_pele int not null primary key,

@@ -10,7 +10,7 @@ public class Pele {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String tom;
+    private Integer tom;
 
     public Integer getId() {
         return id;
@@ -20,11 +20,11 @@ public class Pele {
         this.id = id;
     }
 
-    public String getTom() {
+    public Integer getTom() {
         return tom;
     }
 
-    public void setTom(String tom) {
+    public void setTom(Integer tom) {
         this.tom = tom;
     }
 

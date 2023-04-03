@@ -1,22 +1,21 @@
 package br.com.tcc.skinguard.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "admin")
-public class Admin {
+@Table(name = "esp")
+public class Esp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private Integer esp;
 
-    private String login;
-    private String senha;
-
-    @ManyToOne
-    @JoinColumn(name = "idusuario")
-    private Usuario usuario;
+    @OneToMany(mappedBy = "esp")
+    private List<Usuario> usuarioesp = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -26,28 +25,20 @@ public class Admin {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public Integer getEsp() {
+        return esp;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setEsp(Integer esp) {
+        this.esp = esp;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Admin admin = (Admin) o;
-        return id.equals(admin.id);
+        Esp esp = (Esp) o;
+        return id.equals(esp.id);
     }
 
     @Override

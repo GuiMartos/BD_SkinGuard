@@ -1,5 +1,7 @@
 package br.com.tcc.skinguard.model;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -12,6 +14,22 @@ public class Usuario {
 
     private String login;
     private String senha;
+
+    @ManyToOne
+    @JoinColumn(name = "idfps")
+    private Fps fps;
+
+    @ManyToOne
+    @JoinColumn(name = "idpele")
+    private Pele pele;
+
+    @ManyToOne
+    @JoinColumn(name = "idesp")
+    private Esp esp;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Usuario> adminusuario = new ArrayList<>();
+
 
     public Integer getId() {
         return id;

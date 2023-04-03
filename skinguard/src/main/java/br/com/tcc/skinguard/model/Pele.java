@@ -1,5 +1,7 @@
 package br.com.tcc.skinguard.model;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -9,8 +11,11 @@ public class Pele {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private Integer tom;
+
+    @OneToMany(mappedBy = "pele")
+    private List<Usuario> usuariopele = new ArrayList<>();
+
 
     public Integer getId() {
         return id;

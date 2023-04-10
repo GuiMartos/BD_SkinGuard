@@ -28,7 +28,7 @@ public class Usuario {
     private Esp esp;
 
     @OneToMany(mappedBy = "usuario")
-    private List<Usuario> adminusuario = new ArrayList<>();
+    private List<Admin> adminusuario = new ArrayList<>();
 
 
     public Integer getId() {

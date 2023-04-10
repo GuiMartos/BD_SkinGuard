@@ -11,7 +11,7 @@ public class Pele {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer tom;
+    private String tom;
 
     @OneToMany(mappedBy = "pele")
     private List<Usuario> usuariopele = new ArrayList<>();
@@ -25,11 +25,11 @@ public class Pele {
         this.id = id;
     }
 
-    public Integer getTom() {
+    public String getTom() {
         return tom;
     }
 
-    public void setTom(Integer tom) {
+    public void setTom(String tom) {
         this.tom = tom;
     }
 

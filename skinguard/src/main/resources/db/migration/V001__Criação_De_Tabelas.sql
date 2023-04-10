@@ -1,38 +1,22 @@
 -- Tabela do FPS do filtro solar
 create table fps(
-
  id int not null primary key auto_increment,
  fps int not null
 
 );
 
-insert into fps values(30);
-insert into fps values(50);
-insert into fps values(60);
-insert into fps values(70);
-insert into fps values(80);
-insert into fps values(90);
-insert into fps values(99);
-
 -- Tabela do dispositivo medidor
-create table eps(
+create table esp(
   id int not null primary key auto_increment,
-  esp int not null
+  esp int
 );
 
 
 -- Tabela do tipo de pele
 create table pele(
       id int not null primary key auto_increment,
-      tom int not null
+      tom varchar(8) not null
 );
-insert into pele values("Tipo 1");
-insert into pele values("Tipo 2");
-insert into pele values("Tipo 3");
-insert into pele values("Tipo 4");
-insert into pele values("Tipo 5");
-insert into pele values("Tipo 6");
-insert into pele values("Tipo 7");
 
 -- Tabela do Usuario
 create table usuario(
@@ -41,11 +25,35 @@ create table usuario(
     senha varchar(20),
     idfps int not null,
     idpele int not null,
-    idesp int
+    idesp int not null
 
 );
 
+-- Tabela do Admin
+create table admin(
+    id int not null primary key auto_increment,
+    idusuario int not null
+);
+
+Alter table admin add constraint Fk_admin_usuario FOREIGN key admin(idusuario) references usuario(id);
 Alter table usuario add constraint FK_usuario_fps FOREIGN key usuario(idfps) references fps(id);
 Alter table usuario add constraint FK_usuario_pele FOREIGN key usuario(idpele) references pele(id);
-Alter table usuario add constraint Fk_usuario_esp FOREIGN key usuario(idesp) references esp(id);
+Alter table usuario add constraint FK_usuario_esp FOREIGN key usuario(idesp) references esp(id);
 
+-- Inserts tabela fps
+insert into fps(fps) values(30);
+insert into fps(fps) values(50);
+insert into fps(fps) values(60);
+insert into fps(fps) values(70);
+insert into fps(fps) values(80);
+insert into fps(fps) values(90);
+insert into fps(fps) values(99);
+
+-- Insets tabela pele
+insert into pele(tom) values("Tom 1");
+insert into pele(tom) values("Tom 2");
+insert into pele(tom) values("Tom 3");
+insert into pele(tom) values("Tom 4");
+insert into pele(tom) values("Tom 5");
+insert into pele(tom) values("Tom 6");
+insert into pele(tom) values("Tom 7");

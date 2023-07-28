@@ -3,7 +3,7 @@ package br.com.tcc.skinguard.repository.filter;
 public class AdminFilter {
 
     private String login;
-    private String Senha;
+    private String senha;
 
     public String getLogin() {
         return login;
@@ -14,10 +14,10 @@ public class AdminFilter {
     }
 
     public String getSenha() {
-        return Senha;
+        return senha;
     }
 
     public void setSenha(String senha) {
-        Senha = senha;
+        senha = senha;
     }
 }

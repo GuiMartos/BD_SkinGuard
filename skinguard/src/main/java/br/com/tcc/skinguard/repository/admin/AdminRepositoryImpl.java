@@ -15,6 +15,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminRepositoryImpl implements AdminRepositoryQuery {
 
@@ -34,14 +36,35 @@ public class AdminRepositoryImpl implements AdminRepositoryQuery {
         TypedQuery<Admin> query = manager.createQuery(criteria);
         adicionarRestricoesDePaginacao(query, pageable);
 
-        return new PageImpl<> (query.getSingleResult(), pageable, total(AdminFilter));
+        return new PageImpl<>(query.getSingleResult(), pageable, total(adminFilter));
     }
 
     private Long total(AdminFilter adminFilter){
 
         CriteriaBuilder builder = manager.getCriteriaBuilder();
         CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
-        
+        Root<Admin> root = criteria.from(Admin.class);
+
+        Predicate[] predicates = criarRestricoes(adminFilter, builder, root);
+        criteria.where(predicates);
+        criteria.orderBy(builder.asc(root.get("login")));
+
+        criteria.select(builder.count(root));
+
+        return manager.createQuery(criteria).getSingleResult();
+    }
+
+    private void adicionarRestricoesDePaginacao(TypedQuery<Admin> query, Pageable pageable){
+        int paginaAtual = pageable.getPageNumber();
+        int totalRegistros = pageable.getPageSize();
+        int primeiroRegistroDaPagina = paginaAtual * totalRegistros;
+
+        query.setFirstResult(primeiroRegistroDaPagina);
+        query.setMaxResults(totalRegistros);
+    }
+
+    private Predicate[] criarRestricoes(AdminFilter adminFilter, CriteriaBuilder builder, Root<Admin> root){
+        List<Predicate> predicates = new ArrayList<>();
 
         return null;
     }

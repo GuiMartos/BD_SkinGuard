@@ -1,5 +1,7 @@
 package br.com.tcc.skinguard.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ public class Esp {
     private Integer id;
     private Integer esp;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "esp")
     private List<Usuario> usuarioesp = new ArrayList<>();
 

@@ -1,4 +1,6 @@
 package br.com.tcc.skinguard.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,8 @@ public class Usuario {
     @JoinColumn(name = "idesp")
     private Esp esp;
 
-    @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuarios")
     private List<Admin> adminusuario = new ArrayList<>();
 
 

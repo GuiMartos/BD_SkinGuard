@@ -36,7 +36,7 @@ public class AdminRepositoryImpl implements AdminRepositoryQuery {
         TypedQuery<Admin> query = manager.createQuery(criteria);
         adicionarRestricoesDePaginacao(query, pageable);
 
-        return new PageImpl<>(query.getSingleResult(), pageable, total(adminFilter));
+        return new PageImpl<>(query.getResultList(), pageable, total(adminFilter));
     }
 
     private Long total(AdminFilter adminFilter){

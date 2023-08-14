@@ -2,13 +2,13 @@ package br.com.tcc.skinguard.repository.filter;
 
 public class EspFilter {
 
-    private Integer UvIndex;
+    private Integer uvIndex;
 
     public Integer getUvIndex() {
-        return UvIndex;
+        return uvIndex;
     }
 
     public void setUvIndex(Integer uvIndex) {
-        UvIndex = uvIndex;
+        uvIndex = uvIndex;
     }
 }

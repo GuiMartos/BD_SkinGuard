@@ -1,6 +1,5 @@
 package br.com.tcc.skinguard.repository.pele;
 
-import br.com.tcc.skinguard.model.Admin;
 import br.com.tcc.skinguard.model.Pele;
 import br.com.tcc.skinguard.repository.filter.PeleFilter;
 import org.springframework.data.domain.Page;
@@ -53,7 +52,7 @@ public class PeleRepositoryImpl implements PeleRepositoryQuery {
         return manager.createQuery(criteria).getSingleResult();
     }
 
-    private void adicionarRestricoesDePaginacao(TypedQuery<Admin> query, Pageable pageable){
+    private void adicionarRestricoesDePaginacao(TypedQuery<Pele> query, Pageable pageable){
         int paginaAtual = pageable.getPageNumber();
         int totalRegistros = pageable.getPageSize();
         int primeiroRegistroDaPagina = paginaAtual * totalRegistros;

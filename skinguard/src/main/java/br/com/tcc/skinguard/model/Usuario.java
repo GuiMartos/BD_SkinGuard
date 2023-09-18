@@ -30,7 +30,7 @@ public class Usuario {
     private Esp esp;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "usuarios")
+    @OneToMany(mappedBy = "usuario")
     private List<Admin> adminusuario = new ArrayList<>();
 
 

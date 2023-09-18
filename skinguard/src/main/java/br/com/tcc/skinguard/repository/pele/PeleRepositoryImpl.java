@@ -1,5 +1,6 @@
 package br.com.tcc.skinguard.repository.pele;
 
+import br.com.tcc.skinguard.model.Admin;
 import br.com.tcc.skinguard.model.Pele;
 import br.com.tcc.skinguard.repository.filter.PeleFilter;
 import org.springframework.data.domain.Page;
@@ -13,6 +14,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PeleRepositoryImpl implements PeleRepositoryQuery {
 
@@ -45,6 +48,23 @@ public class PeleRepositoryImpl implements PeleRepositoryQuery {
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("tom")));
 
-        criteria.select(builder.asc())
+        criteria.select(builder.count(root));
+
+        return manager.createQuery(criteria).getSingleResult();
+    }
+
+    private void adicionarRestricoesDePaginacao(TypedQuery<Admin> query, Pageable pageable){
+        int paginaAtual = pageable.getPageNumber();
+        int totalRegistros = pageable.getPageSize();
+        int primeiroRegistroDaPagina = paginaAtual * totalRegistros;
+
+        query.setFirstResult(primeiroRegistroDaPagina);
+        query.setMaxResults(totalRegistros);
+    }
+
+    private Predicate[] criarRestricoes(PeleFilter peleFilter, CriteriaBuilder builder, Root<Pele> root){
+        List<Predicate> predicates = new ArrayList<>();
+
+        return null;
     }
 }

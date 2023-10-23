@@ -18,6 +18,6 @@ public class AdminFilter {
     }
 
     public void setSenha(String senha) {
-        senha = senha;
+        this.senha = senha;
     }
 }

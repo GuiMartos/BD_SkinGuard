@@ -2,6 +2,7 @@ package br.com.tcc.skinguard.repository.pele;
 
 import br.com.tcc.skinguard.model.Pele;
 import br.com.tcc.skinguard.repository.filter.PeleFilter;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -64,6 +65,11 @@ public class PeleRepositoryImpl implements PeleRepositoryQuery {
     private Predicate[] criarRestricoes(PeleFilter peleFilter, CriteriaBuilder builder, Root<Pele> root){
         List<Predicate> predicates = new ArrayList<>();
 
-        return null;
+        if(!StringUtils.isEmpty(peleFilter.getTom())){
+            predicates.add(builder.like(builder.lower(root.get("tom")),
+                    "%"+peleFilter.getTom().toLowerCase()+"%"));
+        }
+
+        return predicates.toArray((new Predicate[predicates.size()]));
     }
 }

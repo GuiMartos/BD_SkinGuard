@@ -64,7 +64,7 @@ public class FpsRepositoryImpl implements FpsRepositoryQuery{
 
     private Predicate[] criarRestricoes(FpsFilter fpsFilter, CriteriaBuilder builder, Root<Fps> root) {
         List<Predicate> predicates = new ArrayList<>();
-        
+
         if (fpsFilter.getFps() != null) {
             predicates.add(builder.equal(root.get("fps"), fpsFilter.getFps()));
         }

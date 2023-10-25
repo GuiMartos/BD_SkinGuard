@@ -41,7 +41,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryQuery{
         Predicate[] predicates = criarRestricoes (usuarioFilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("usuario")));
-        TypedQuery<Usuario> query = manager.createQuery(criteria);
+        TypedQuery<ResumoUsuario> query = manager.createQuery(criteria);
         adicionarRestricoesDePaginacao(query, pageable);
 
         return new PageImpl<>(query.getResultList(),pageable, total(usuarioFilter));

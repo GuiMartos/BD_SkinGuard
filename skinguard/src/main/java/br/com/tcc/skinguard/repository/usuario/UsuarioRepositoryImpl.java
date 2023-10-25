@@ -2,6 +2,7 @@ package br.com.tcc.skinguard.repository.usuario;
 
 import br.com.tcc.skinguard.model.Usuario;
 import br.com.tcc.skinguard.repository.filter.UsuarioFilter;
+import br.com.tcc.skinguard.repository.projections.ResumoUsuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -25,8 +26,17 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryQuery{
     public Page<Usuario> filtrar(UsuarioFilter usuarioFilter, Pageable pageable) {
 
         CriteriaBuilder builder = manager.getCriteriaBuilder();
-        CriteriaQuery<Usuario> criteria = builder.createQuery(Usuario.class);
+        CriteriaQuery<ResumoUsuario> criteria = builder.createQuery(ResumoUsuario.class);
         Root<Usuario> root = criteria.from(Usuario.class);
+
+        criteria.select(builder.construct(ResumoUsuario.class
+                ,root.get("id")
+                ,root.get("login")
+                ,root.get("senha")
+                ,root.get("pele").get("tom")
+                ,root.get("fps").get("fps")
+
+        ));
 
         Predicate[] predicates = criarRestricoes (usuarioFilter, builder, root);
         criteria.where(predicates);

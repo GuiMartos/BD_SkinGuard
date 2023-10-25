@@ -45,7 +45,7 @@ public class FpsRepositoryImpl implements FpsRepositoryQuery{
 
         Predicate[] prediates = criarRestricoes(fpsFilter, builder, root);
         criteria.where(prediates);
-        criteria.orderBy(builder.asc(root.get("Fps")));
+        criteria.orderBy(builder.asc(root.get("fps")));
 
         criteria.select(builder.count(root));
 

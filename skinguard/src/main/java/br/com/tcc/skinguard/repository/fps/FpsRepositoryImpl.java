@@ -2,6 +2,7 @@ package br.com.tcc.skinguard.repository.fps;
 
 import br.com.tcc.skinguard.model.Fps;
 import br.com.tcc.skinguard.repository.filter.FpsFilter;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -43,8 +44,8 @@ public class FpsRepositoryImpl implements FpsRepositoryQuery{
         CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
         Root <Fps> root = criteria.from(Fps.class);
 
-        Predicate[] prediates = criarRestricoes(fpsFilter, builder, root);
-        criteria.where(prediates);
+        Predicate[] predicates = criarRestricoes(fpsFilter, builder, root);
+        criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("fps")));
 
         criteria.select(builder.count(root));
@@ -61,9 +62,12 @@ public class FpsRepositoryImpl implements FpsRepositoryQuery{
         query.setMaxResults(totalRegistros);
     }
 
-    private Predicate[] criarRestricoes(FpsFilter fpsFilter, CriteriaBuilder builder, Root<Fps> root){
+    private Predicate[] criarRestricoes(FpsFilter fpsFilter, CriteriaBuilder builder, Root<Fps> root) {
         List<Predicate> predicates = new ArrayList<>();
-
-        return null;
+        
+        if (fpsFilter.getFps() != null) {
+            predicates.add(builder.equal(root.get("fps"), fpsFilter.getFps()));
+        }
+        return predicates.toArray(new Predicate[0]);
     }
 }

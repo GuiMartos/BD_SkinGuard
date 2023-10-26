@@ -3,6 +3,7 @@ package br.com.tcc.skinguard.repository.usuario;
 import br.com.tcc.skinguard.model.Usuario;
 import br.com.tcc.skinguard.repository.filter.UsuarioFilter;
 import br.com.tcc.skinguard.repository.projections.ResumoUsuario;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -23,7 +24,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryQuery{
     private EntityManager manager;
 
     @Override
-    public Page<Usuario> filtrar(UsuarioFilter usuarioFilter, Pageable pageable) {
+    public Page<ResumoUsuario> filtrar(UsuarioFilter usuarioFilter, Pageable pageable) {
 
         CriteriaBuilder builder = manager.getCriteriaBuilder();
         CriteriaQuery<ResumoUsuario> criteria = builder.createQuery(ResumoUsuario.class);
@@ -61,7 +62,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryQuery{
         return manager.createQuery(criteria).getSingleResult();
     }
 
-    private void adicionarRestricoesDePaginacao(TypedQuery<Usuario> query, Pageable pageable){
+    private void adicionarRestricoesDePaginacao(TypedQuery<?> query, Pageable pageable){
         int paginaAtual = pageable.getPageNumber();
         int totalRegistros = pageable.getPageSize();
         int primeiroRegistroDaPagina = paginaAtual * totalRegistros;
@@ -73,6 +74,16 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryQuery{
     private Predicate[] criarRestricoes(UsuarioFilter usuarioFilter, CriteriaBuilder builder, Root<Usuario> root){
         List<Predicate> predicates = new ArrayList<>();
 
-        return null;
+        if (!StringUtils.isEmpty(usuarioFilter.getLogin())){
+            predicates.add(builder.like(builder.lower(root.get("login")),
+                    "%"+usuarioFilter.getLogin().toLowerCase()));
+        }
+
+        if (!StringUtils.isEmpty(usuarioFilter.getPele())){
+            predicates.add(builder.like(builder.lower(root.get("pele").get("tom")),
+                    "%"+ usuarioFilter.getPele().toLowerCase() +"%"));
+        }
+
+        return predicates.toArray((new Predicate[predicates.size()]));
     }
 }

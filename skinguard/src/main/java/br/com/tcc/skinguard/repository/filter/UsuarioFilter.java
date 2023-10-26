@@ -4,6 +4,8 @@ public class UsuarioFilter {
 
     private String login;
     private String Senha;
+    private String Pele;
+    private Integer Fps;
 
     public String getLogin() {
         return login;
@@ -21,4 +23,19 @@ public class UsuarioFilter {
         Senha = senha;
     }
 
+    public String getPele() {
+        return Pele;
+    }
+
+    public void setPele(String pele) {
+        Pele = pele;
+    }
+
+    public Integer getFps() {
+        return Fps;
+    }
+
+    public void setFps(Integer fps) {
+        Fps = fps;
+    }
 }

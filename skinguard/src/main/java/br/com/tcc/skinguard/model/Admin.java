@@ -1,7 +1,6 @@
 package br.com.tcc.skinguard.model;
-
-import javax.persistence.*;
 import java.util.Objects;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "admin")
@@ -40,6 +39,14 @@ public class Admin {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override

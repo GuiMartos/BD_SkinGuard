@@ -36,6 +36,14 @@ public class Esp {
         this.esp = esp;
     }
 
+    public List<Usuario> getUsuarioesp() {
+        return usuarioesp;
+    }
+
+    public void setUsuarioesp(List<Usuario> usuarioesp) {
+        this.usuarioesp = usuarioesp;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

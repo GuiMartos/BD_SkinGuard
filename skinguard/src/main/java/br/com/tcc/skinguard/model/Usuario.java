@@ -17,14 +17,17 @@ public class Usuario {
     private String login;
     private String senha;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idfps")
     private Fps fps;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idpele")
     private Pele pele;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idesp")
     private Esp esp;
@@ -56,6 +59,38 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Fps getFps() {
+        return fps;
+    }
+
+    public void setFps(Fps fps) {
+        this.fps = fps;
+    }
+
+    public Pele getPele() {
+        return pele;
+    }
+
+    public void setPele(Pele pele) {
+        this.pele = pele;
+    }
+
+    public Esp getEsp() {
+        return esp;
+    }
+
+    public void setEsp(Esp esp) {
+        this.esp = esp;
+    }
+
+    public List<Admin> getAdminusuario() {
+        return adminusuario;
+    }
+
+    public void setAdminusuario(List<Admin> adminusuario) {
+        this.adminusuario = adminusuario;
     }
 
     @Override

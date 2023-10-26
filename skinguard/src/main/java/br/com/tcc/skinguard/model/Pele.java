@@ -36,6 +36,14 @@ public class Pele {
         this.tom = tom;
     }
 
+    public List<Usuario> getUsuariopele() {
+        return usuariopele;
+    }
+
+    public void setUsuariopele(List<Usuario> usuariopele) {
+        this.usuariopele = usuariopele;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -32,6 +32,14 @@ public class Fps {
         this.fps = fps;
     }
 
+    public List<Usuario> getUsuariofps() {
+        return usuariofps;
+    }
+
+    public void setUsuariofps(List<Usuario> usuariofps) {
+        this.usuariofps = usuariofps;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

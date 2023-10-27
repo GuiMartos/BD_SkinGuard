@@ -5,12 +5,6 @@ create table fps(
 
 );
 
--- Tabela do dispositivo medidor
-create table esp(
-  id int not null primary key auto_increment,
-  esp int
-);
-
 
 -- Tabela do tipo de pele
 create table pele(
@@ -25,13 +19,13 @@ create table usuario(
     senha varchar(20),
     idfps int not null,
     idpele int not null,
-    idesp int not null
+
 
 );
 
 Alter table usuario add constraint FK_usuario_fps FOREIGN key usuario(idfps) references fps(id);
 Alter table usuario add constraint FK_usuario_pele FOREIGN key usuario(idpele) references pele(id);
-Alter table usuario add constraint FK_usuario_esp FOREIGN key usuario(idesp) references esp(id);
+
 
 -- Inserts tabela fps
 insert into fps(fps) values(30);

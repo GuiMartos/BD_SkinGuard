@@ -1,9 +1,5 @@
 package br.com.tcc.skinguard.repository.projections;
 
-import br.com.tcc.skinguard.model.Esp;
-import br.com.tcc.skinguard.model.Fps;
-import br.com.tcc.skinguard.model.Pele;
-
 public class ResumoUsuario {
     private Integer id;
 

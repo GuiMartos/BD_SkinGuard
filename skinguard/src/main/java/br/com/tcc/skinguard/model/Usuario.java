@@ -27,11 +27,6 @@ public class Usuario {
     @JoinColumn(name = "idpele")
     private Pele pele;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "idesp")
-    private Esp esp;
-
 
 
     public Integer getId() {
@@ -72,14 +67,6 @@ public class Usuario {
 
     public void setPele(Pele pele) {
         this.pele = pele;
-    }
-
-    public Esp getEsp() {
-        return esp;
-    }
-
-    public void setEsp(Esp esp) {
-        this.esp = esp;
     }
 
 

@@ -29,13 +29,6 @@ create table usuario(
 
 );
 
--- Tabela do Admin
-create table admin(
-    id int not null primary key auto_increment,
-    idusuario int not null
-);
-
-Alter table admin add constraint Fk_admin_usuario FOREIGN key admin(idusuario) references usuario(id);
 Alter table usuario add constraint FK_usuario_fps FOREIGN key usuario(idfps) references fps(id);
 Alter table usuario add constraint FK_usuario_pele FOREIGN key usuario(idpele) references pele(id);
 Alter table usuario add constraint FK_usuario_esp FOREIGN key usuario(idesp) references esp(id);

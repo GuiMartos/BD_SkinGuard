@@ -32,9 +32,6 @@ public class Usuario {
     @JoinColumn(name = "idesp")
     private Esp esp;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "usuario")
-    private List<Admin> adminusuario = new ArrayList<>();
 
 
     public Integer getId() {
@@ -85,13 +82,6 @@ public class Usuario {
         this.esp = esp;
     }
 
-    public List<Admin> getAdminusuario() {
-        return adminusuario;
-    }
-
-    public void setAdminusuario(List<Admin> adminusuario) {
-        this.adminusuario = adminusuario;
-    }
 
     @Override
     public boolean equals(Object o) {

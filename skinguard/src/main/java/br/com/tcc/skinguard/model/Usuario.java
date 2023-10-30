@@ -27,6 +27,11 @@ public class Usuario {
     @JoinColumn(name = "idpele")
     private Pele pele;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "idclima")
+    private Clima clima;
+
 
 
     public Integer getId() {
@@ -69,6 +74,13 @@ public class Usuario {
         this.pele = pele;
     }
 
+    public Clima getClima() {
+        return clima;
+    }
+
+    public void setClima(Clima clima) {
+        this.clima = clima;
+    }
 
     @Override
     public boolean equals(Object o) {

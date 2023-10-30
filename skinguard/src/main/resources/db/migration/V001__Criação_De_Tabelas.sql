@@ -5,8 +5,6 @@ create table fps(
 
 );
 
-
-
 create table pele(
       id int not null primary key auto_increment,
       tom varchar(8) not null

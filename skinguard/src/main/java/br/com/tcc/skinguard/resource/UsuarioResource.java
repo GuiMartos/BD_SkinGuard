@@ -19,6 +19,6 @@ public class UsuarioResource {
 
     @GetMapping("/todos")
     public List<Usuario> listarTodosUsuarios(){
-        return usuarioRepository.findAll(Sort.by("usuario").ascending());
+        return usuarioRepository.findAll(Sort.by("login").ascending());
     }
 }

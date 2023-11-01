@@ -18,7 +18,6 @@ public class Clima {
     private LocalDate dia;
     private Integer uvindex;
     private LocalTime sol1;
-
     private LocalTime sol2;
 
     @OneToMany(mappedBy = "clima")

@@ -6,6 +6,7 @@ public class UsuarioFilter {
     private String Senha;
     private String Pele;
     private Integer Fps;
+    private Integer Clima;
 
     public String getLogin() {
         return login;
@@ -37,5 +38,13 @@ public class UsuarioFilter {
 
     public void setFps(Integer fps) {
         Fps = fps;
+    }
+
+    public Integer getClima() {
+        return Clima;
+    }
+
+    public void setClima(Integer clima) {
+        Clima = clima;
     }
 }

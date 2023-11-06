@@ -36,6 +36,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryQuery{
                 ,root.get("senha")
                 ,root.get("pele").get("tom")
                 ,root.get("fps").get("fps")
+                ,root.get("clima").get("clima")
 
         ));
 

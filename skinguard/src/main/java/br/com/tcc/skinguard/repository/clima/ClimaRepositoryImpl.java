@@ -4,6 +4,7 @@ import br.com.tcc.skinguard.model.Clima;
 import br.com.tcc.skinguard.model.Fps;
 import br.com.tcc.skinguard.model.Pele;
 import br.com.tcc.skinguard.repository.filter.ClimaFilter;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -68,6 +69,27 @@ public class ClimaRepositoryImpl implements ClimaRepositoryQuery {
     private Predicate[] criarRestricoes(ClimaFilter climaFilter, CriteriaBuilder builder, Root<Clima> root){
         List<Predicate> predicates = new ArrayList<>();
 
-        return null;
+        if (climaFilter.getDia() != null){
+            predicates.add(builder.greaterThanOrEqualTo(root.get("dia"),climaFilter.getDia()));
+        }
+
+        if (climaFilter.getHora() != null){
+            predicates.add(builder.greaterThanOrEqualTo(root.get("hora"),climaFilter.getHora()));
+        }
+
+        if (climaFilter.getUvindex() != null){
+            predicates.add(builder.greaterThanOrEqualTo(root.get("uvindex"),climaFilter.getUvindex()));
+        }
+
+        if (climaFilter.getSol1() != null){
+            predicates.add(builder.greaterThanOrEqualTo(root.get("sol1"),climaFilter.getSol1()));
+        }
+
+        if (climaFilter.getSol2() != null){
+            predicates.add(builder.greaterThanOrEqualTo(root.get("sol2"),climaFilter.getSol2()));
+        }
+
+
+        return predicates.toArray((new Predicate[predicates.size()]));
     }
 }

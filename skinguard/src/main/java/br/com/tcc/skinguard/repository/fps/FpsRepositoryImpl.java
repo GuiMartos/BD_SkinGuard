@@ -66,8 +66,9 @@ public class FpsRepositoryImpl implements FpsRepositoryQuery{
         List<Predicate> predicates = new ArrayList<>();
 
         if (fpsFilter.getFps() != null) {
-            predicates.add(builder.equal(root.get("fps"), fpsFilter.getFps()));
+            predicates.add(builder.greaterThanOrEqualTo(root.get("fps"), fpsFilter.getFps()));
         }
-        return predicates.toArray(new Predicate[0]);
+
+        return predicates.toArray((new Predicate[predicates.size()]));
     }
 }

@@ -11,16 +11,19 @@ public class ResumoUsuario {
 
     private String pele;
 
-    private Integer esp;
+    private Integer clima;
 
-    public ResumoUsuario(Integer id, String senha, String login, Integer fps, String pele, Integer esp){
+
+
+    public ResumoUsuario(Integer id, String senha, String login, Integer fps, String pele, Integer esp, Integer clima){
 
         this.id=id;
         this.login=login;
         this.senha=senha;
         this.fps=fps;
         this.pele=pele;
-        this.esp=esp;
+        this.clima=clima;
+
     }
 
     public Integer getId() {
@@ -63,11 +66,11 @@ public class ResumoUsuario {
         this.pele = pele;
     }
 
-    public Integer getEsp() {
-        return esp;
+    public Integer getClima() {
+        return clima;
     }
 
-    public void setEsp(Integer esp) {
-        this.esp = esp;
+    public void setClima(Integer clima) {
+        this.clima = clima;
     }
 }

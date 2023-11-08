@@ -13,4 +13,3 @@ insert into pele(tom) values("Tom 3");
 insert into pele(tom) values("Tom 4");
 insert into pele(tom) values("Tom 5");
 insert into pele(tom) values("Tom 6");
-insert into pele(tom) values("Tom 7");

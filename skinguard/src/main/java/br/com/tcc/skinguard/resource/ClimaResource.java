@@ -21,7 +21,7 @@ public class ClimaResource {
 
     @GetMapping("/todos")
     public List<Clima> listarClima(){
-        return climaRepository.findAll(Sort.by("clima").ascending());
+        return climaRepository.findAll(Sort.by("hora").ascending());
     }
 
 }

@@ -19,6 +19,6 @@ public class PeleResource {
 
     @GetMapping("/todos")
     public List<Pele> listarTodosPele(){
-        return peleRepository.findAll(Sort.by("pele").ascending());
+        return peleRepository.findAll(Sort.by("tom").ascending());
     }
 }

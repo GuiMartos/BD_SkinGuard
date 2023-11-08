@@ -15,6 +15,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClimaRepositoryImpl implements ClimaRepositoryQuery {
 
@@ -35,7 +37,7 @@ public class ClimaRepositoryImpl implements ClimaRepositoryQuery {
         TypedQuery<Clima> query = manager .createQuery(criteria);
         adicionaRestricoesDePaginacao(query, pageable);
 
-        return new PageImpl<>(query.getSingleResult(), pageable, total(climaFilter));
+        return new PageImpl<>(query.getResultList(), pageable, total(climaFilter));
 
     }
 
@@ -64,6 +66,7 @@ public class ClimaRepositoryImpl implements ClimaRepositoryQuery {
     }
 
     private Predicate[] criarRestricoes(ClimaFilter climaFilter, CriteriaBuilder builder, Root<Clima> root){
+        List<Predicate> predicates = new ArrayList<>();
 
         return null;
     }

@@ -24,4 +24,5 @@ public class ClimaResource {
         return climaRepository.findAll(Sort.by("hora").ascending());
     }
 
+
 }

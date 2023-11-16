@@ -34,5 +34,20 @@ public class UsuarioResource {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remover(@PathVariable Integer id){usuarioRepository.deleteById(id);}
 
+    @PutMapping("/mudar-usuario/{id}")
+    public HttpStatus mudarusuario(@PathVariable Integer id, @RequestBody Usuario usuarioRequest){
+        return usuarioRepository.findById(id).map(
+                usuario -> {
+                    usuario.setPele(usuarioRequest.getPele());
+                    usuario.setFps(usuarioRequest.getFps());
+                    usuario.setLogin(usuarioRequest.getLogin());
+                    usuario.setSenha(usuarioRequest.getSenha());
+                    return HttpStatus.OK;
+                }
+        ).orElseGet(() -> {
+            return HttpStatus.NOT_FOUND;
+        });
+    }
+
 
 }
